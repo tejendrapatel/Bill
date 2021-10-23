@@ -1,0 +1,206 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<link rel="stylesheet" href="customUploadStyle.css">
+</head>
+<script>
+   $(".email-signup").hide();
+$("#signup-box-link").click(function(){
+  $(".email-login").fadeOut(100);
+  $(".email-signup").delay(100).fadeIn(100);
+  $("#login-box-link").removeClass("active");
+  $("#signup-box-link").addClass("active");
+});
+
+</script>
+<style>
+body{
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background: url(https://cdn.pixabay.com/photo/2019/10/18/19/51/financial-4560047__340.jpg);
+  background-size: cover;
+}
+.login-box{
+  position:relative;
+  margin: 10px auto;
+  width: 500px;
+  height: 520px;
+  background: rgba(0,0,0,.6);
+  padding: 10px;
+  border-radius: 3px;
+  -webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.6);
+-moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.6);
+box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.6);
+}
+.lb-header{
+  position:relative;
+  color: #00415d;
+  margin: 5px 5px 10px 5px;
+  padding-bottom:10px;
+  border-bottom: 1px solid #eee;
+  text-align:center;
+  height:28px;
+}
+.lb-header a{
+  margin: 0 25px;
+  padding: 0 20px;
+  text-decoration: none;
+  color: #666;
+  font-weight: bold;
+  font-size: 15px;
+  -webkit-transition: all 0.1s linear;
+  -moz-transition: all 0.1s linear;
+  transition: all 0.1s linear;
+}
+.lb-header .active{
+  color: #029f5b;
+  font-size: 18px;
+}
+.social-login{
+  position:relative;
+  float: left;
+  width: 100%;
+  height:auto;
+  padding: 10px 0 15px 0;
+  border-bottom: 1px solid #eee;
+}
+.social-login a{
+  position:relative;
+  float: left;
+  width:calc(40% - 8px);
+  text-decoration: none;
+  color: #fff;
+  border: 1px solid rgba(0,0,0,0.05);
+  padding: 12px;
+  border-radius: 2px;
+  font-size: 12px;
+  text-transform: uppercase;
+  margin: 0 3%;
+  text-align:center;
+}
+.social-login a i{
+  position: relative;
+  float: left;
+  width: 20px;
+  top: 2px;
+}
+.social-login a:first-child{
+  background-color: #49639F;
+}
+.social-login a:last-child{
+  background-color: #DF4A32;
+}
+.email-login,.email-signup{
+  position:relative;
+  float: left;
+  width: 100%;
+  height:auto;
+  margin-top: 20px;
+  text-align:center;
+}
+.u-form-group{
+  width:100%;
+  margin-bottom: 10px;
+}
+.u-form-group input[type="number"],
+.u-form-group input[type="date"],
+.u-form-group input[type="file"]{
+  width: calc(50% - 22px);
+  height:45px;
+  outline: none;
+  border: 1px solid #ddd;
+  padding: 0 10px;
+  border-radius: 2px;
+  color: #333;
+  font-size:0.8rem;
+  -webkit-transition:all 0.1s linear;
+  -moz-transition:all 0.1s linear;
+  transition:all 0.1s linear;
+}
+.u-form-group input:focus{
+  border-color: #358efb;
+}
+.u-form-group button{
+  width:50%;
+  background-color: #1CB94E;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 14px;
+  font-weight: normal;
+  padding: 14px 0;
+  border-radius: 2px;
+  text-transform: uppercase;
+}
+.forgot-password{
+  width:50%;
+  text-align: left;
+  text-decoration: underline;
+  color: #888;
+  font-size: 0.75rem;
+}
+.container{
+    top:77%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    position:absolute;
+
+}
+.upload-box{
+    font-size:12px;
+    background:white;
+    border-radius: 50px;
+    box-shadow: 5px 5px 10px black;
+    width:250px;
+    outline:green;
+}
+
+::-webkit-file-upload-button{
+    color-white ;
+    background: #206a5d;
+    padding: 20px;
+    border: none;
+    border-radius: 50px;
+    box-shadow: 1px 0 1px 1px #6b4559;
+    outline: none;
+}
+</style>
+
+<div class="login-box">
+    <div class="lb-header">
+      <a href="#"class="active" >welcome:{{ request.user.username }}</a>
+      <a href="{% url 'Mainn' %}"class="active" >View Bills</a>
+    </div>
+    <form class="email-signup" action="" method="post">
+      {% csrf_token %}
+        <div class="u-form-group">
+        <input type="number" required placeholder="Enter Total Bill" name="totalbill">
+      </div>
+      <div class="u-form-group">
+        <input type="number" required placeholder="Enter Total Unit" name="totalunit">
+      </div>
+       <div class="u-form-group">
+        <input type="number" required placeholder="Enter 2 Meter Old Reading" name="meter21">
+      </div>
+      <div class="u-form-group">
+        <input type="number"required placeholder="Enter 2 Meter New Readnig" name="meter2">
+      </div>
+      <div class="container">
+        <input type="file" class="upload-box" required name="img">
+      </div>
+      <div class="u-form-group">
+        <input type="date" required placeholder="enter date" name="date" >
+      </div>
+      <div class="u-form-group">
+        <input type ="hidden"  placeholder="enter date" >
+      </div> <br/><br/><br/><br/>
+      <div class="u-form-group">
+        <button >Submit</button>
+      </div>
+    </form>
+  </div>
+
+</html>

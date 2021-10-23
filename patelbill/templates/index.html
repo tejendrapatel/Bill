@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+	<!--content-->
+		<div class="content">
+			<div class="container">
+				<!--products-->
+			<div class="content-mid">
+				<h3>BILLS</h3>
+				<label class="line"></label>
+				<div class="mid-popular">
+                    {% for i in bill %}
+
+					<div class="col-md-4 item-grid simpleCart_shelfItem">
+					<div class=" mid-pop">
+					<div class="pro-img">
+						<img src="{{ i.Bill_image.url }}" class="img-responsive" alt="">
+						<div class="zoom-icon ">
+						<a class="picture" href="{{ i.Bill_image.url }}" rel="title" class="b-link-stripe b-animate-go  thickbox"><i class="glyphicon glyphicon-search icon "></i></a>
+						<a href=""><i class="glyphicon glyphicon-menu-right icon"></i></a>
+						</div>
+						</div>
+						<div class="mid-1">
+						<div class="women">
+						<div class="women-top">
+							<span>{{ i.Bill_date }}</span>
+							<h6><a>Total Bill - {{ i.Main_meter_bill_RS }}</a></h6>
+							<h6><a>Total Unit - {{ i.Main_Meter_Unit }}</a></h6>
+							<h6><a>Per Rs unit - {{ i.Per_Unit_Rs }}</a></h6>
+							</div>
+							<div class="img item_add">
+							</div>
+							<div class="clearfix"></div>
+							</div>
+                            <span>Umesh Meter Bill RS - {{ i.First_meter_bill_RS }}</span>
+                            <p>Umesh Meter Unit - {{ i.First_Meter_Unit }}</p>
+                            <span>Dwarka Meter Bill RS - {{ i.Second_meter_bill_RS }}</span>
+                            <p>Dwarka Meter Unit - {{ i.Second_Meter_Unit }}</p>
+							<div class="mid-2">
+								  <div class="block">
+									<div class="starbox small ghosting"> </div>
+								</div>
+                            <a href="{% url 'deleteblog' i.id %}"class="active" >Delete</a>
+                            <div class="elfsight-app-c38099f3-316d-40e0-8610-a0ab28a17679"></div>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+					</div>
+					</div>
+                    {% endfor %}
+					<div class="clearfix"></div>
+				</div>
+                </div>
+			</div>
+			<!--//products-->
+			</div>
+			
+		</div>
+	<!--//content-->
+  {% endblock %}
